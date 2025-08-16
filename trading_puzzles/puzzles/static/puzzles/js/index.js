@@ -16,7 +16,13 @@ document.addEventListener("DOMContentLoaded", () => {
 
   function initChart(data) {
     const c = document.getElementById("chart");
-    window.activeChart  = LightweightCharts.createChart(c, { width:900, height:500 });
+    window.activeChart  = LightweightCharts.createChart(c, {
+      width:900,
+      height:500,
+      timeScale: {
+        fixLeftEdge: true,
+      },
+    });
     window.activeSeries = window.activeChart.addCandlestickSeries();
     window.activeSeries.setData(data);
     if (data.length) window.lastCandle = data[data.length-1];
